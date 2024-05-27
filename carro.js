@@ -9,19 +9,19 @@ function mostraCarro() {
 }
 
 function movimentaCarro() {
-    xCarros[0] -= velocidadeCarros[0];
-    xCarros[1] -= velocidadeCarros[1];
-    xCarros[2] -= velocidadeCarros[2];
+    for (let i = 0; i < imagemCarros.length; i++) {
+        xCarros[i] -= velocidadeCarros[i];
+    }
 }
 
-function voltaPosicaoDoCarro() {
-    if (xCarros[0] < -50) {
-        xCarros[0] = 600;
+function voltaPosicaoInicialDoCarro() {
+    for (let i = 0; i < imagemCarros.length; i++) {
+        if(passouTodaATela(xCarros[i])) {
+            xCarros[i] = 600;
+        }
     }
-    if (xCarros[1] < -50) {
-        xCarros[1] = 600;
-    }
-    if (xCarros[2] < -50) {
-        xCarros[2] = 600;
-    }
+}
+
+function passouTodaATela(xCarro) {
+    return xCarro < -50;
 }
